@@ -2,7 +2,11 @@ from datetime import date
 
 def main():
 
-    expenses = []  
+    expenses = {
+         "food and beverage": [],
+          "transportation": [],
+         "entertainment": []
+            }  
     while True:
         
         print("Menu:")
@@ -88,20 +92,3 @@ def main():
 
 
 
-expenses = {
-   "food and beverage": [],
-   "transportation": [],
-   "entertainment": []
-}
-
-
-item_name = input("Enter the food item name: ")
-amount = float(input("Enter the cost: "))
-
-
-expenses["food and beverage"].append({
-   "item": item_name,
-   "amount": amount
-})
-
-print(expenses)
