@@ -1,79 +1,138 @@
+def add_expense(expenses):
+    """
+    Adds a new expense with category, item, amount, and date.
+    """
+    try:
+        category = input("Enter category: ")
+        item = input("Enter item name: ")
+        amount = float(input("Enter amount: $"))
+        date = input("Enter date (YYYY-MM-DD): ")
+
+        expense = {
+            "category": category,
+            "item": item,
+            "amount": amount,
+            "date": date
+        }
+
+        expenses.append(expense)
+        print("Expense added successfully ✅")
+
+    except ValueError:
+        print("Invalid amount. Please enter a number.")
+
+
+def view_expenses(expenses):
+    """
+    Displays all expenses in a clear, organized format.
+    """
+    if not expenses:
+        print("No expenses recorded.")
+        return
+
+    print("\nAll Expenses:")
+    for i, expense in enumerate(expenses, start=1):
+        print(f"\nExpense {i}:")
+        for key, value in expense.items():
+            if key == "amount":
+                print(f"  {key.capitalize()}: ${value:.2f}")
+            else:
+                print(f"  {key.capitalize()}: {value}")
+
+
+def calculate_total(expenses):
+    """
+    Calculates and displays total expenses.
+    """
+    if not expenses:
+        print("No expenses to calculate.")
+        return
+
+    total = 0
+    for expense in expenses:
+        total += expense["amount"]
+
+    print(f"Total expenses: ${total:.2f}")
+
+
+def filter_by_category(expenses):
+    """
+    Filters expenses by category.
+    """
+    category = input("Enter category to filter by: ")
+    found = False
+
+    for expense in expenses:
+        if expense["category"].lower() == category.lower():
+            print(
+                f"{expense['date']} | "
+                f"{expense['category']} | "
+                f"{expense['item']} | "
+                f"${expense['amount']:.2f}"
+            )
+            found = True
+
+    if not found:
+        print("No expenses found for this category.")
+
+
+def delete_expense(expenses):
+    """
+    Deletes an expense by category, item, and date.
+    """
+    if not expenses:
+        print("No expenses to delete.")
+        return
+
+    category = input("Enter category: ")
+    item = input("Enter item name: ")
+    date = input("Enter date (YYYY-MM-DD): ")
+
+    for expense in expenses:
+        if (
+            expense["category"].lower() == category.lower()
+            and expense["item"].lower() == item.lower()
+            and expense["date"] == date
+        ):
+            expenses.remove(expense)
+            print("Expense deleted successfully 🗑️")
+            return
+
+    print("No matching expense found.")
+
+
 def main():
-    expenses = {
-        "food and beverage": []
-    }
+    """
+    Main menu loop for the Expense Tracker.
+    """
+    expenses = []
 
     while True:
-        print("\nMenu:")
-        print("1. Add expense")
-        print("2. View expenses")
-        print("3. Remove expense")
-        print("4. Calculate total expenses")
-        print("5. Exit 🚨")
+        print("\nExpense Tracker Menu")
+        print("1. Add Expense")
+        print("2. View All Expenses")
+        print("3. Filter Expenses by Category")
+        print("4. Calculate Total Expenses")
+        print("5. Delete Expense")
+        print("6. Exit 🚨")
 
-        user_choice = input("Choose an option: ")
+        choice = input("Choose an option: ")
 
-        # ADD EXPENSE
-        if user_choice == "1":
-            try:
-                category = ("Category: ")
-                item = input("Food item: ")
-                cost = float(input("Cost: $"))
-
-                expenses["food and beverage"].append({
-                    "Category:": category,
-                    "item": item,
-                    "amount": cost
-                })
-
-                print("Expense added successfully!")
-
-            except ValueError:
-                print("Invalid cost. Please enter a number.")
-
-        # VIEW EXPENSES
-        elif user_choice == "2":
-            if not expenses["food and beverage"]:
-                print("No expenses added yet.")
-            else:
-                print("\nYour food & beverage expenses:")
-                for i, expense in enumerate(expenses["food and beverage"], start=1):
-                    print(f"{i}. {expense['item']} - ${expense['amount']:.2f}")
-
-        # REMOVE EXPENSE
-        elif user_choice == "3":
-            if not expenses["food and beverage"]:
-                print("No expenses to remove.")
-                continue
-
-            for i, expense in enumerate(expenses["food and beverage"], start=1):
-                print(f"{i}. {expense['item']} - ${expense['amount']:.2f}")
-
-            try:
-                to_remove = int(input("Enter expense number to delete: "))
-                expenses["food and beverage"].pop(to_remove - 1)
-                print("Expense removed 🎯")
-
-            except (ValueError, IndexError):
-                print("Invalid selection.")
-
-        # CALCULATE TOTAL EXPENSES        
-        elif user_choice == "4":
-            if not expenses["food and beverage"]:
-                print("No expenses to calculate.")
-            else:
-                total = 0
-                for expense in expenses["food and beverage"]:
-                    total += expense["amount"]
-
-                print(f"Total spent on food & beverages: ${total:.2f}")
-        # EXIT
-        elif user_choice == "5":
+        if choice == "1":
+            add_expense(expenses)
+        elif choice == "2":
+            view_expenses(expenses)
+        elif choice == "3":
+            filter_by_category(expenses)
+        elif choice == "4":
+            calculate_total(expenses)
+        elif choice == "5":
+            delete_expense(expenses)
+        elif choice == "6":
             print("Goodbye 👋")
             break
-
         else:
-            print("Invalid option, please try again.")
+            print("Invalid option. Please try again.")
 
 
 main()
