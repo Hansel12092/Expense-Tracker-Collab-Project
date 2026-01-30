@@ -21,7 +21,7 @@ def main():
                 cost = float(input("Cost: $"))
 
                 expenses["food and beverage"].append({
-                    "Category:": category
+                    "Category:": category,
                     "item": item,
                     "amount": cost
                 })
