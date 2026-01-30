@@ -1,7 +1,7 @@
 def add_expense(expenses):
-  
-#Adds a new expense with category, item, amount, and date.
-
+    """
+    Adds a new expense with category, item, amount, and date.
+    """
     try:
         category = input("Enter category: ")
         item = input("Enter item name: ")
@@ -23,9 +23,9 @@ def add_expense(expenses):
 
 
 def view_expenses(expenses):
-
-#Displays all expenses in a clear, organized format.
-
+    """
+    Displays all expenses in a clear, organized format.
+    """
     if not expenses:
         print("No expenses recorded.")
         return
@@ -41,9 +41,9 @@ def view_expenses(expenses):
 
 
 def calculate_total(expenses):
-
-#Calculates and displays total expenses.
-
+    """
+    Calculates and displays total expenses.
+    """
     if not expenses:
         print("No expenses to calculate.")
         return
@@ -56,9 +56,9 @@ def calculate_total(expenses):
 
 
 def filter_by_category(expenses):
-
-#Filters expenses by category.
-
+    """
+    Filters expenses by category.
+    """
     category = input("Enter category to filter by: ")
     found = False
 
@@ -77,9 +77,9 @@ def filter_by_category(expenses):
 
 
 def delete_expense(expenses):
-
-#Deletes an expense by category, item, and date.
-
+    """
+    Deletes an expense by category, item, and date.
+    """
     if not expenses:
         print("No expenses to delete.")
         return
@@ -101,10 +101,30 @@ def delete_expense(expenses):
     print("No matching expense found.")
 
 
+def sort_by_date(expenses):
+    """
+    Sorts and displays expenses by date (earliest to latest).
+    """
+    if not expenses:
+        print("No expenses to sort.")
+        return
+
+    sorted_expenses = sorted(expenses, key=lambda expense: expense["date"])
+
+    print("\nExpenses Sorted by Date:")
+    for i, expense in enumerate(sorted_expenses, start=1):
+        print(
+            f"{i}. {expense['date']} | "
+            f"{expense['category']} | "
+            f"{expense['item']} | "
+            f"${expense['amount']:.2f}"
+        )
+
+
 def main():
-
-#Main menu loop for the Expense Tracker.
-
+    """
+    Main menu loop for the Expense Tracker.
+    """
     expenses = []
 
     while True:
@@ -114,7 +134,8 @@ def main():
         print("3. Filter Expenses by Category")
         print("4. Calculate Total Expenses")
         print("5. Delete Expense")
-        print("6. Exit 🚨")
+        print("6. Sort Expenses by Date")
+        print("7. Exit 🚨")
 
         choice = input("Choose an option: ")
 
@@ -129,6 +150,8 @@ def main():
         elif choice == "5":
             delete_expense(expenses)
         elif choice == "6":
+            sort_by_date(expenses)
+        elif choice == "7":
             print("Goodbye 👋")
             break
         else:
