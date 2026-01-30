@@ -1,7 +1,7 @@
 def add_expense(expenses):
-    """
-    Adds a new expense with category, item, amount, and date.
-    """
+  
+#Adds a new expense with category, item, amount, and date.
+
     try:
         category = input("Enter category: ")
         item = input("Enter item name: ")
@@ -23,9 +23,9 @@ def add_expense(expenses):
 
 
 def view_expenses(expenses):
-    """
-    Displays all expenses in a clear, organized format.
-    """
+
+#Displays all expenses in a clear, organized format.
+
     if not expenses:
         print("No expenses recorded.")
         return
@@ -41,9 +41,9 @@ def view_expenses(expenses):
 
 
 def calculate_total(expenses):
-    """
-    Calculates and displays total expenses.
-    """
+
+#Calculates and displays total expenses.
+
     if not expenses:
         print("No expenses to calculate.")
         return
@@ -56,9 +56,9 @@ def calculate_total(expenses):
 
 
 def filter_by_category(expenses):
-    """
-    Filters expenses by category.
-    """
+
+#Filters expenses by category.
+
     category = input("Enter category to filter by: ")
     found = False
 
@@ -77,9 +77,9 @@ def filter_by_category(expenses):
 
 
 def delete_expense(expenses):
-    """
-    Deletes an expense by category, item, and date.
-    """
+
+#Deletes an expense by category, item, and date.
+
     if not expenses:
         print("No expenses to delete.")
         return
@@ -102,9 +102,9 @@ def delete_expense(expenses):
 
 
 def main():
-    """
-    Main menu loop for the Expense Tracker.
-    """
+
+#Main menu loop for the Expense Tracker.
+
     expenses = []
 
     while True:
