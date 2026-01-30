@@ -1,94 +1,79 @@
-from datetime import date
-
 def main():
-
     expenses = {
-         "food and beverage": [],
-          "transportation": [],
-         "entertainment": []
-            }  
+        "food and beverage": []
+    }
+
     while True:
-        
-        print("Menu:")
-        
-        print("1. Food and beverages")
-        
-        print("2. Check expenses")
-        
-        print("3. remove expenses")
-        
-        print("4. Exit 🚨")
+        print("\nMenu:")
+        print("1. Add expense")
+        print("2. View expenses")
+        print("3. Remove expense")
+        print("4. Calculate total expenses")
+        print("5. Exit 🚨")
 
         user_choice = input("Choose an option: ")
 
-
-        
-
+        # ADD EXPENSE
         if user_choice == "1":
-           
-            print("Enter food and beverages: ")
-            
-            food = input("Food: ")
-            
-            cost = input("cost: ")
-            
+            try:
+                category = ("Category: ")
+                item = input("Food item: ")
+                cost = float(input("Cost: $"))
 
-            expenses.append((food, cost))
-           
-            expenses.sort(key=lambda x: x[0])
+                expenses["food and beverage"].append({
+                    "Category:": category
+                    "item": item,
+                    "amount": cost
+                })
 
-            print("Expense added and sorted!")
+                print("Expense added successfully!")
 
+            except ValueError:
+                print("Invalid cost. Please enter a number.")
+
+        # VIEW EXPENSES
         elif user_choice == "2":
-            
-            if not expenses:
-               
+            if not expenses["food and beverage"]:
                 print("No expenses added yet.")
-            
             else:
-                
-                print("Your expenses:")
-                
-                for i, (r_date, r_text) in enumerate(expenses, start=1):
-                    
-                    print(f"{i}. {r_date}  -  {r_text}")
+                print("\nYour food & beverage expenses:")
+                for i, expense in enumerate(expenses["food and beverage"], start=1):
+                    print(f"{i}. {expense['item']} - ${expense['amount']:.2f}")
 
+        # REMOVE EXPENSE
         elif user_choice == "3":
-           
-            if not expenses:
-                
-                print("No expenses to remove. ୧(๑•̀ヮ•́)૭ LET'S GO!")
-                
+            if not expenses["food and beverage"]:
+                print("No expenses to remove.")
                 continue
 
-            print("Your expenses:")
-            
-            for i, (r_date, r_text) in enumerate(expenses, start=1):
-                
-                print(f"{i}. {r_date}  -  {r_text}")
+            for i, expense in enumerate(expenses["food and beverage"], start=1):
+                print(f"{i}. {expense['item']} - ${expense['amount']:.2f}")
 
             try:
-               
-                to_remove = int(input("Enter reminder number to delete: "))
-                
-                expenses.pop(to_remove - 1)
-                
-                print("expnese removed 🎯")
-            
+                to_remove = int(input("Enter expense number to delete: "))
+                expenses["food and beverage"].pop(to_remove - 1)
+                print("Expense removed 🎯")
+
             except (ValueError, IndexError):
-                
                 print("Invalid selection.")
 
-
+        # CALCULATE TOTAL EXPENSES        
         elif user_choice == "4":
-          
-            print("good bye")
-            
+            if not expenses["food and beverage"]:
+                print("No expenses to calculate.")
+            else:
+                total = 0
+                for expense in expenses["food and beverage"]:
+                    total += expense["amount"]
+
+                print(f"Total spent on food & beverages: ${total:.2f}")
+        # EXIT
+        elif user_choice == "5":
+            print("Goodbye 👋")
             break
 
         else:
-          
-            print("Invalid option, please try again. :(")
+            print("Invalid option, please try again.")
 
 
-
+main()
