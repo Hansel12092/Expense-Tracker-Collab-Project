@@ -1,6 +1,10 @@
 # Expense Tracker Collab Project
 
-- Track expenses program allow user to organize spendings
+- Track expenses program allow users to organize spendings
+
+- All expenses are shown in a structured way
+
+- Users can manipulate program easily
 
 ## Roles and Tasks
 
@@ -12,7 +16,7 @@
 
 ## Expense Tracker Features
 
-- Allows user to input Category, Item, Cost, and Date
+- Allows users to input Category, Item, Cost, and Date
 
 - User can Add or Remove expenses, and view them conveniently
 
