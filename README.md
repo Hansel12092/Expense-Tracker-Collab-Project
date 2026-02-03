@@ -1,5 +1,6 @@
 # Expense Tracker Collab Project
 
+- Track expenses allow user to organize spendings
 
 ## Roles and Tasks
 
