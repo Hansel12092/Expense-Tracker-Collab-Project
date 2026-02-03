@@ -2,6 +2,7 @@
 
 
 ## Roles and Tasks
+
 - Hansel: Responsible for Handling Expenses
 
 - Dustin: Responsible for calculating the total cost of the expenses
@@ -9,6 +10,7 @@
 - Matthew: Responsible for filtering Expense categories
 
 ## Expense Tracker Features
+
 - Allows user to input Category, Item, Cost, and Date
 
 - User can Add or Remove expenses, and view them conveniently
@@ -19,4 +21,9 @@
 
 ## Difficulties
 
+- Creating the program with variety of skill sets learned in term 1, it is difficult because the skills started to fade out
+
+- Collaborating with different teammates
+
+- Learning a new skill on a new platform (collaboration)
 
