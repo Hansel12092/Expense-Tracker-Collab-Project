@@ -1,3 +1,5 @@
+#Set up Expense adding mechanism
+
 def add_expense(expenses):
 
     try:
