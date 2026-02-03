@@ -1,11 +1,16 @@
-#Adds New Expense
+#Define adding expenses mechanism
+
 def add_expense(expenses):
 
+#Asks user to enter a category, item, amount, and the date
+
     try:
-        #Asks user to enter a category, item, amount, and the date
         category = input("Enter category: ")
+        
         item = input("Enter item name: ")
+        
         amount = float(input("Enter amount: $"))
+        
         date = input("Enter date (YYYY-MM-DD): ")
 
 #Stores expense as a dictionary
@@ -15,14 +20,19 @@ def add_expense(expenses):
             "amount": amount,
             "date": date
         }
+
 #Adds expense to expense list
+
         expenses.append(expense) 
-        print("Expense added successfully ✅") #Shows when user enters valid format
+        print("Expense added successfully ✅") 
+
+#Shows when user enters valid format
 
     except ValueError: #shows if the user does not enter a number
         print("Invalid amount. Please enter a number.")
 
-# Displays all expenses in a clear, organized format.    
+#Displays all expenses in a clear, organized format.    
+
 def view_expenses(expenses):
    # Checks if the list is empty
     if not expenses:
@@ -31,10 +41,10 @@ def view_expenses(expenses):
 
     print("\nAll Expenses:")
 
-    #Loop 
+#Loop 
     for i, expense in enumerate(expenses, start=1): #Gives expenses a number
         print(f"\nExpense {i}:")
-        #
+      
         for key, value in expense.items():
             if key == "amount":
                 print(f"  {key.capitalize()}: ${value:.2f}")
@@ -42,7 +52,9 @@ def view_expenses(expenses):
                 print(f"  {key.capitalize()}: {value}")
 
 #Calculates and displays total expenses.
+
 def calculate_total(expenses):
+
 #Checks if there are expenses to calculate
     if not expenses:
         print("No expenses to calculate.")
@@ -50,22 +62,26 @@ def calculate_total(expenses):
 
     total = 0 #Starts total at 0
 
-    #Adds each expense amount to the total which is 0
+
+#Adds each expense amount to the total which is 0
     for expense in expenses:
         total += expense["amount"]
+
 #Shows the total with 2 decimal places
     print(f"Total expenses: ${total:.2f}")
 
-# Filters expenses by category.
+#Filters expenses by category.
 
 def filter_by_category(expenses):
-  #Asks a user the category they want to see
+
+#Asks a user the category they want to see
     category = input("Enter category to filter by: ")
     found = False # checks if a match is found
 
 
     for expense in expenses:
-        #Checks if the user input mmatches any category 
+
+#Checks if the user input mmatches any category 
         if expense["category"].lower() == category.lower():
             print(
                 f"{expense['date']} | "
@@ -74,23 +90,27 @@ def filter_by_category(expenses):
                 f"${expense['amount']:.2f}"
             )
             found = True
+
 #Shows in no maches are found
     if not found:
         print("No expenses found for this category.")
 
-#   Deletes an expense by category, item, and date.
+#Deletes an expense by category, item, and date.
 def delete_expense(expenses):
     
     if not expenses:
         print("No expenses to delete.")
         return
+
 #Asks user to enter information abut the item or expense the would like to delete
     category = input("Enter category: ")
     item = input("Enter item name: ")
     date = input("Enter date (YYYY-MM-DD): ")
+
 #loop through ezh expense in the list
     for expense in expenses:
-        #Checks if the information the user entered matches an expense in the list
+
+#Checks if the information the user entered matches an expense in the list
         if (
             expense["category"].lower() == category.lower()
             and expense["item"].lower() == item.lower()
@@ -104,9 +124,10 @@ def delete_expense(expenses):
     print("No matching expense found.")
 
 #Sorts and displays expenses by date (earliest to latest).
+
 def sort_by_date(expenses):
    
-   #Checks if there are any expenses to sort
+#Checks if there are any expenses to sort
     if not expenses:
         print("No expenses to sort.")
         return
@@ -123,7 +144,8 @@ def sort_by_date(expenses):
             f"${expense['amount']:.2f}"
         )
 
-#Shows Menu
+#Define main function regarding the user initial choices
+
 def main():
 
     expenses = []
