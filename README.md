@@ -1,6 +1,6 @@
 # Expense Tracker Collab Project
 
-- Track expenses allow user to organize spendings
+- Track expenses program allow user to organize spendings
 
 ## Roles and Tasks
 
@@ -27,4 +27,12 @@
 - Collaborating with different teammates
 
 - Learning a new skill on a new platform (collaboration)
+
+## Reflection 
+
+- This project is a sneak-peak of how professional programmers create collaborative projects
+
+- reinforces our programming amd collaboration skills.
+
+- Develop resilience towards unefficient communications, and overcoming challenges
 
