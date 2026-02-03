@@ -6,9 +6,9 @@
 
 - Hansel: Responsible for Handling Expenses
 
-- Dustin: Responsible for calculating the total cost of the expenses
+- Dustin: Responsible for filtering and deleting expenses
 
-- Matthew: Responsible for filtering Expense categories
+- Matthew: Responsible for calculating the total cost of the expenses
 
 ## Expense Tracker Features
 
